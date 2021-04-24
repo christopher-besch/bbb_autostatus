@@ -4,6 +4,7 @@
     "version": "0.1",
     "author": "Christopher Besch",
     "description": "A set of Big Blue Button Tools.",
+    "homepage_url": "https://github.com/christopher-besch/bbb_autostatus",
 
     "permissions": ["notifications", "tabs", "storage"],
     "background": {
@@ -30,7 +31,7 @@
     },
     "commands": {
         "toggle-raise": {
-            "suggested_key": { "default": "Ctrl+Shift+U" },
+            "suggested_key": { "default": "Ctrl+E" },
             "description": "Toggle raised hand"
         }
     }

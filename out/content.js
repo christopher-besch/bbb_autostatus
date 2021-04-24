@@ -105,7 +105,16 @@ browser.runtime.onMessage.addListener((msg) => {
         case "blend_in": {
             let best_status = get_best_status(msg.forbidden_statuses);
             update_status(best_status);
+            console.log("best status is: " + best_status);
             break;
+        }
+        case "toggle_raise": {
+            const current_user = get_current_user();
+            const current_status = get_status(current_user);
+            if (current_status == 3)
+                update_status(1);
+            else
+                update_status(3);
         }
     }
 });

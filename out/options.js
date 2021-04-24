@@ -25,6 +25,20 @@ function update_settings(overwrite) {
                     toggle_raise_form.value = command.shortcut;
         });
     }
+    else {
+        let error_p = document.getElementById("invalid-shortcut");
+        // todo: very bad
+        error_p.style.display = "block";
+        browser.commands
+            .update({
+            name: "toggle-raise",
+            shortcut: toggle_raise_form.value,
+        })
+            .then(() => {
+            // success -> remove invalid label
+            error_p.style.display = "none";
+        });
+    }
 }
 const update_settings_button = document.getElementById("update-settings");
 update_settings_button.addEventListener("click", (e) => {

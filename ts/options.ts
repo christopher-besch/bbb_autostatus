@@ -27,6 +27,19 @@ function update_settings(overwrite: boolean): void {
             for (let command of commands)
                 if (command.name === "toggle-raise") toggle_raise_form.value = command.shortcut;
         });
+    } else {
+        let error_p = document.getElementById("invalid-shortcut") as HTMLParagraphElement;
+        // todo: very bad
+        error_p.style.display = "block";
+        browser.commands
+            .update({
+                name: "toggle-raise",
+                shortcut: toggle_raise_form.value,
+            })
+            .then(() => {
+                // success -> remove invalid label
+                error_p.style.display = "none";
+            });
     }
 }
 

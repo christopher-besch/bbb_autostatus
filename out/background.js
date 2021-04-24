@@ -82,6 +82,16 @@ function handle_msg(msg) {
         }
     }
 }
+browser.commands.onCommand.addListener((name) => {
+    switch (name) {
+        case "toggle-raise": {
+            msg_content({
+                command: "toggle_raise",
+            });
+            break;
+        }
+    }
+});
 let forbidden_statuses = {
     1: false,
     2: false,

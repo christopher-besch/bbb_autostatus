@@ -85,6 +85,17 @@ function handle_msg(msg: any): void {
     }
 }
 
+browser.commands.onCommand.addListener((name: string) => {
+    switch (name) {
+        case "toggle-raise": {
+            msg_content({
+                command: "toggle_raise",
+            });
+            break;
+        }
+    }
+});
+
 let forbidden_statuses: { [status: number]: boolean } = {
     1: false,
     2: false,
