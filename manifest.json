@@ -5,7 +5,7 @@
     "author": "Christopher Besch",
     "description": "A set of Big Blue Button Tools.",
 
-    "permissions": ["notifications", "tabs"],
+    "permissions": ["notifications", "tabs", "storage"],
     "background": {
         "page": "out/background.html",
         "persistent": true
@@ -18,5 +18,13 @@
     ],
     "browser_action": {
         "default_popup": "out/popup.html"
+    },
+    "options_ui": {
+        "page": "out/options.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "addon@example.com"
+        }
     }
 }

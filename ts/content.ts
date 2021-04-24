@@ -1,4 +1,4 @@
-declare var browser: any;
+declare let browser: any;
 
 function expand(element: HTMLElement): void {
     // only if necessary
@@ -70,7 +70,7 @@ function update_status(status: number): void {
     pallet_options[status].click();
 }
 
-function get_best_status(forbidden_statuses: number[]): number {
+function get_best_status(forbidden_statuses: { [status: number]: boolean }): number {
     const users = get_all_users();
     let scores: number[][] = [
         [1, 0],
@@ -86,9 +86,7 @@ function get_best_status(forbidden_statuses: number[]): number {
     ];
     for (let user of users) {
         const status = get_status(user);
-        if (!(forbidden_statuses.indexOf(status) > -1)) {
-            scores[get_status(user) - 1][1]++;
-        }
+        if (!forbidden_statuses[status]) scores[get_status(user) - 1][1]++;
     }
     scores.sort((a, b) => {
         return b[1] - a[1];

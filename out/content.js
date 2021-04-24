@@ -76,9 +76,8 @@ function get_best_status(forbidden_statuses) {
     ];
     for (let user of users) {
         const status = get_status(user);
-        if (!(forbidden_statuses.indexOf(status) > -1)) {
+        if (!forbidden_statuses[status])
             scores[get_status(user) - 1][1]++;
-        }
     }
     scores.sort((a, b) => {
         return b[1] - a[1];

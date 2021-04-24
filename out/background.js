@@ -34,10 +34,14 @@ function status_brr(status, timeout) {
 function blend_in() {
     if (!running_daemons["anti_afk_detection"])
         return;
-    msg_content({
-        command: "blend_in",
-        // todo: don't hard code
-        forbidden_statuses: [],
+    browser.storage.sync.get("forbidden_statuses").then((result) => {
+        // only overwrite if entry existent in storage
+        if (result.forbidden_statuses !== undefined)
+            forbidden_statuses = result.forbidden_statuses;
+        msg_content({
+            command: "blend_in",
+            forbidden_statuses: forbidden_statuses,
+        });
     });
     // wait and call again
     window.setTimeout(() => {
@@ -74,6 +78,18 @@ function handle_msg(msg) {
         }
     }
 }
+let forbidden_statuses = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+    10: false,
+};
 let running_daemons = {
     status_brr: false,
     anti_afk_detection: false,

@@ -1,5 +1,5 @@
 export {};
-declare var browser: any;
+declare let browser: any;
 
 function notify(msg: string) {
     browser.notifications.create({
@@ -36,10 +36,13 @@ function status_brr(status: number, timeout: number): void {
 
 function blend_in(): void {
     if (!running_daemons["anti_afk_detection"]) return;
-    msg_content({
-        command: "blend_in",
-        // todo: don't hard code
-        forbidden_statuses: [],
+    browser.storage.sync.get("forbidden_statuses").then((result: any) => {
+        // only overwrite if entry existent in storage
+        if (result.forbidden_statuses !== undefined) forbidden_statuses = result.forbidden_statuses;
+        msg_content({
+            command: "blend_in",
+            forbidden_statuses: forbidden_statuses,
+        });
     });
     // wait and call again
     window.setTimeout(() => {
@@ -78,6 +81,18 @@ function handle_msg(msg: any): void {
     }
 }
 
+let forbidden_statuses: { [status: number]: boolean } = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+    10: false,
+};
 let running_daemons: { [name: string]: boolean } = {
     status_brr: false,
     anti_afk_detection: false,

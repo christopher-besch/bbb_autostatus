@@ -1,5 +1,5 @@
 export {};
-declare var browser: any;
+declare let browser: any;
 
 function update_status(status: number): void {
     // set new status
