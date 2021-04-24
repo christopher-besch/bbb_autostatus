@@ -1,13 +1,3 @@
-// function update_settings(): void {
-//     const status = (document.getElementById("status-form") as HTMLInputElement).value;
-//     // send message to background
-//     browser.runtime.sendMessage({
-//         source: "popup",
-//         destination: "content",
-//         command: "update_status",
-//         status: status,
-//     });
-// }
 function update_status(status) {
     // stop brr
     status_brr(false, 1000);
@@ -19,6 +9,7 @@ function update_status(status) {
         status: status,
     });
 }
+// activate or deactivate daemon to cycle statuses
 function status_brr(start, timeout) {
     browser.runtime.sendMessage({
         source: "popup",
@@ -32,11 +23,11 @@ function add_status_button_listener() {
     const buttons = document.getElementsByClassName("status-button");
     for (let button of buttons) {
         button.addEventListener("click", (e) => {
-            update_status(button.dataset.status);
+            update_status(JSON.parse(button.dataset.status));
         });
     }
 }
-function get_timout() {
+function get_timeout() {
     // get value
     const timeout_raw = document.getElementById("timeout-form").value;
     const timeout = JSON.parse(timeout_raw);
@@ -46,7 +37,7 @@ function get_timout() {
 }
 window.onload = add_status_button_listener;
 document.getElementById("status-go-brr").addEventListener("click", (e) => {
-    status_brr(true, get_timout());
+    status_brr(true, get_timeout());
 });
 export {};
 // icon-bbb-time

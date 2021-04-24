@@ -1,20 +1,22 @@
 export {};
 declare var browser: any;
 
-function update_status(status: string): void {
+function update_status(status: number): void {
     reroute_msg({
-        source: "popup",
+        source: "background",
         destination: "content",
         command: "update_status",
         status: status,
     });
 }
 
-function status_brr(idx: number, timeout: number): void {
+function status_brr(status: number, timeout: number): void {
     if (!brr_running) return;
-    update_status(statuses[idx]);
+    update_status(status);
+    // wait and call again
     window.setTimeout(() => {
-        status_brr(++idx % 9, timeout);
+        const new_status = status == 10 ? 1 : ++status;
+        status_brr(new_status, timeout);
     }, timeout);
 }
 
@@ -22,8 +24,7 @@ function handle_background_msg(msg: any): void {
     switch (msg.command) {
         case "status_brr": {
             brr_running = JSON.parse(msg.start);
-            status_brr(0, msg.timeout);
-            console.log(msg.timout);
+            status_brr(1, msg.timeout);
             break;
         }
     }
@@ -36,8 +37,7 @@ function reroute_msg(msg: any): void {
             break;
         }
         case "content": {
-            browser.tabs.query({ currentWindow: true, active: true }).then((tabs: any) => {
-                // only to active tab
+            browser.tabs.query({ url: "*://*.bigbluebutton.org/*" }).then((tabs: any) => {
                 for (let tab of tabs) browser.tabs.sendMessage(tab.id, msg);
             });
             break;
@@ -45,22 +45,10 @@ function reroute_msg(msg: any): void {
     }
 }
 
-const statuses: string[] = [
-    "time",
-    "hand",
-    "undecided",
-    "confused",
-    "sad",
-    "happy",
-    "applause",
-    "thumbs_up",
-    "thumbs_down",
-];
 let brr_running = false;
-// todo: select right tab
-// todo: notification
 browser.runtime.onMessage.addListener(reroute_msg);
 
+// todo: notification
 // browser.notifications.create({
 //     type: "basic",
 //     title: "You clicked a link!",

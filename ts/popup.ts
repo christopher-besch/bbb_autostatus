@@ -1,18 +1,7 @@
 export {};
 declare var browser: any;
 
-// function update_settings(): void {
-//     const status = (document.getElementById("status-form") as HTMLInputElement).value;
-//     // send message to background
-//     browser.runtime.sendMessage({
-//         source: "popup",
-//         destination: "content",
-//         command: "update_status",
-//         status: status,
-//     });
-// }
-
-function update_status(status: string): void {
+function update_status(status: number): void {
     // stop brr
     status_brr(false, 1000);
     // set new status
@@ -24,6 +13,7 @@ function update_status(status: string): void {
     });
 }
 
+// activate or deactivate daemon to cycle statuses
 function status_brr(start: boolean, timeout: number): void {
     browser.runtime.sendMessage({
         source: "popup",
@@ -40,12 +30,12 @@ function add_status_button_listener(): void {
     ) as HTMLCollectionOf<HTMLButtonElement>;
     for (let button of buttons) {
         button.addEventListener("click", (e) => {
-            update_status(button.dataset.status as string);
+            update_status(JSON.parse(button.dataset.status as string));
         });
     }
 }
 
-function get_timout(): number {
+function get_timeout(): number {
     // get value
     const timeout_raw = (document.getElementById("timeout-form") as HTMLInputElement).value;
     const timeout = JSON.parse(timeout_raw);
@@ -58,7 +48,7 @@ function get_timout(): number {
 
 window.onload = add_status_button_listener;
 (document.getElementById("status-go-brr") as HTMLButtonElement).addEventListener("click", (e) => {
-    status_brr(true, get_timout());
+    status_brr(true, get_timeout());
 });
 
 // icon-bbb-time

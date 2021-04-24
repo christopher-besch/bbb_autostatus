@@ -5,10 +5,10 @@
     "author": "Christopher Besch",
     "description": "A set of Big Blue Button Tools.",
 
-    "permissions": ["notifications"],
+    "permissions": ["notifications", "tabs"],
     "background": {
-        "scripts": [],
-        "page": ["out/background.html"]
+        "page": "out/background.html",
+        "persistent": true
     },
     "content_scripts": [
         {
