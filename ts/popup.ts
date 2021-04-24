@@ -2,25 +2,10 @@ export {};
 declare var browser: any;
 
 function update_status(status: number): void {
-    // stop brr
-    status_brr(false, 1000);
     // set new status
     browser.runtime.sendMessage({
-        source: "popup",
-        destination: "content",
         command: "update_status",
         status: status,
-    });
-}
-
-// activate or deactivate daemon to cycle statuses
-function status_brr(start: boolean, timeout: number): void {
-    browser.runtime.sendMessage({
-        source: "popup",
-        destination: "background",
-        command: "status_brr",
-        start: start,
-        timeout: timeout,
     });
 }
 
@@ -40,13 +25,24 @@ function get_timeout(): number {
     const timeout_raw = (document.getElementById("timeout-form") as HTMLInputElement).value;
     const timeout = JSON.parse(timeout_raw);
     // set label
-    (document.getElementById(
-        "timeout-label"
-    ) as HTMLLabelElement).innerHTML = `Timeout: ${timeout}ms`;
+    (document.getElementById("timeout-label") as HTMLLabelElement).innerHTML =
+        "Timeout: " + timeout + "ms";
     return timeout;
 }
 
 window.onload = add_status_button_listener;
 (document.getElementById("status-go-brr") as HTMLButtonElement).addEventListener("click", (e) => {
-    status_brr(true, get_timeout());
+    browser.runtime.sendMessage({
+        command: "status_brr",
+        timeout: get_timeout(),
+    });
 });
+
+(document.getElementById("anti-afk-detection") as HTMLButtonElement).addEventListener(
+    "click",
+    (e) => {
+        browser.runtime.sendMessage({
+            command: "anti_afk_detection",
+        });
+    }
+);

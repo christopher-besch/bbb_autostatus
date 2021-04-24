@@ -1,22 +1,8 @@
 function update_status(status) {
-    // stop brr
-    status_brr(false, 1000);
     // set new status
     browser.runtime.sendMessage({
-        source: "popup",
-        destination: "content",
         command: "update_status",
         status: status,
-    });
-}
-// activate or deactivate daemon to cycle statuses
-function status_brr(start, timeout) {
-    browser.runtime.sendMessage({
-        source: "popup",
-        destination: "background",
-        command: "status_brr",
-        start: start,
-        timeout: timeout,
     });
 }
 function add_status_button_listener() {
@@ -32,12 +18,21 @@ function get_timeout() {
     const timeout_raw = document.getElementById("timeout-form").value;
     const timeout = JSON.parse(timeout_raw);
     // set label
-    document.getElementById("timeout-label").innerHTML = `Timeout: ${timeout}ms`;
+    document.getElementById("timeout-label").innerHTML =
+        "Timeout: " + timeout + "ms";
     return timeout;
 }
 window.onload = add_status_button_listener;
 document.getElementById("status-go-brr").addEventListener("click", (e) => {
-    status_brr(true, get_timeout());
+    browser.runtime.sendMessage({
+        command: "status_brr",
+        timeout: get_timeout(),
+    });
+});
+document.getElementById("anti-afk-detection").addEventListener("click", (e) => {
+    browser.runtime.sendMessage({
+        command: "anti_afk_detection",
+    });
 });
 export {};
 //# sourceMappingURL=popup.js.map

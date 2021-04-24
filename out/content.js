@@ -60,6 +60,31 @@ function update_status(status) {
     }
     pallet_options[status].click();
 }
+function get_best_status(forbidden_statuses) {
+    const users = get_all_users();
+    let scores = [
+        [1, 0],
+        [2, 0],
+        [3, 0],
+        [4, 0],
+        [5, 0],
+        [6, 0],
+        [7, 0],
+        [8, 0],
+        [9, 0],
+        [10, 0],
+    ];
+    for (let user of users) {
+        const status = get_status(user);
+        if (!(forbidden_statuses.indexOf(status) > -1)) {
+            scores[get_status(user) - 1][1]++;
+        }
+    }
+    scores.sort((a, b) => {
+        return b[1] - a[1];
+    });
+    return scores[0][0];
+}
 const status_icons = {
     "icon-bbb-time": 2,
     "icon-bbb-hand": 3,
@@ -76,6 +101,11 @@ browser.runtime.onMessage.addListener((msg) => {
     switch (msg.command) {
         case "update_status": {
             update_status(msg.status);
+            break;
+        }
+        case "blend_in": {
+            let best_status = get_best_status(msg.forbidden_statuses);
+            update_status(best_status);
             break;
         }
     }
