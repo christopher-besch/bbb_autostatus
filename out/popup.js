@@ -40,13 +40,4 @@ document.getElementById("status-go-brr").addEventListener("click", (e) => {
     status_brr(true, get_timeout());
 });
 export {};
-// icon-bbb-time
-// icon-bbb-hand
-// icon-bbb-undecided
-// icon-bbb-confused
-// icon-bbb-sad
-// icon-bbb-happy
-// icon-bbb-applause
-// icon-bbb-thumbs_up
-// icon-bbb-thumbs_down
 //# sourceMappingURL=popup.js.map

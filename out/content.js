@@ -1,5 +1,4 @@
 "use strict";
-document.body.style.border = "5px solid green";
 function expand(element) {
     // only if necessary
     const expanded = JSON.parse(element.getAttribute("aria-expanded"));

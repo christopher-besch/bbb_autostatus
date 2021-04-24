@@ -50,13 +50,3 @@ window.onload = add_status_button_listener;
 (document.getElementById("status-go-brr") as HTMLButtonElement).addEventListener("click", (e) => {
     status_brr(true, get_timeout());
 });
-
-// icon-bbb-time
-// icon-bbb-hand
-// icon-bbb-undecided
-// icon-bbb-confused
-// icon-bbb-sad
-// icon-bbb-happy
-// icon-bbb-applause
-// icon-bbb-thumbs_up
-// icon-bbb-thumbs_down

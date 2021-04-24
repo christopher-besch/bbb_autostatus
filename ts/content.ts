@@ -1,5 +1,4 @@
 declare var browser: any;
-document.body.style.border = "5px solid green";
 
 function expand(element: HTMLElement): void {
     // only if necessary
