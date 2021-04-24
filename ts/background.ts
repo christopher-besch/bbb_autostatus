@@ -36,7 +36,7 @@ function status_brr(status: number, timeout: number): void {
 
 function blend_in(): void {
     if (!running_daemons["anti_afk_detection"]) return;
-    browser.storage.sync.get("forbidden_statuses").then((result: any) => {
+    browser.storage.sync.get().then((result: any) => {
         // only overwrite if entry existent in storage
         if (result.forbidden_statuses !== undefined) forbidden_statuses = result.forbidden_statuses;
         msg_content({
@@ -78,6 +78,10 @@ function handle_msg(msg: any): void {
             stop_daemons();
             break;
         }
+        case "open_settings": {
+            browser.runtime.openOptionsPage();
+            break;
+        }
     }
 }
 
@@ -99,5 +103,4 @@ let running_daemons: { [name: string]: boolean } = {
 };
 browser.runtime.onMessage.addListener(handle_msg);
 
-// todo: settings
 // todo: hotkeys

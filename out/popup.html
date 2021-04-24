@@ -6,10 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Blue Button Autostatus</title>
+    <style>
+        body {
+            padding: 1em;
+        }
+
+        input {
+            margin-left: 1em;
+        }
+
+        label {
+            margin-left: 1em;
+        }
+    </style>
 </head>
 
 <body>
     <h5>Big Blue Button Autostatus</h5>
+    <button id="open-settings">Open Settings</button>
+    <hr>
     <button class="status-button" data-status="1">None</button><br />
     <button class="status-button" data-status="2">Away</button><br />
     <button class="status-button" data-status="3">Raise</button><br />
@@ -23,6 +38,7 @@
     <button id="status-go-brr">Status Go Brrrrrrrrr</button>
     <label id="timeout-label" for="timout-form">Timeout: 1000ms</label>
     <input id="timeout-form" type="range" min="100" max="1000" value="1000"><br />
+    <hr>
     <button id="anti-afk-detection">Anti AFK Detection (experimental)</button>
 
     <script type="module" src="popup.js"></script>

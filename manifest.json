@@ -24,7 +24,14 @@
     },
     "browser_specific_settings": {
         "gecko": {
-            "id": "addon@example.com"
+            "id": "bbb_autostatus@christopher-besch",
+            "strict_min_version": "60.0b5"
+        }
+    },
+    "commands": {
+        "toggle-raise": {
+            "suggested_key": { "default": "Ctrl+Shift+U" },
+            "description": "Toggle raised hand"
         }
     }
 }

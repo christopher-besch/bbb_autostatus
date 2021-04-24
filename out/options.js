@@ -1,5 +1,7 @@
 function update_settings(overwrite) {
-    // afk-checkboxes
+    ////////////////////
+    // afk-checkboxes //
+    ////////////////////
     const elements = document.getElementsByClassName("afk-form");
     for (let element of elements) {
         // currently selected status
@@ -12,6 +14,17 @@ function update_settings(overwrite) {
     }
     // update storage
     browser.storage.sync.set({ forbidden_statuses: forbidden_statuses });
+    ///////////////
+    // shortcuts //
+    ///////////////
+    const toggle_raise_form = document.getElementById("toggle-raise-form");
+    if (overwrite) {
+        browser.commands.getAll().then((commands) => {
+            for (let command of commands)
+                if (command.name === "toggle-raise")
+                    toggle_raise_form.value = command.shortcut;
+        });
+    }
 }
 const update_settings_button = document.getElementById("update-settings");
 update_settings_button.addEventListener("click", (e) => {
@@ -30,7 +43,7 @@ let forbidden_statuses = {
     10: false,
 };
 window.onload = () => {
-    browser.storage.sync.get("forbidden_statuses").then((result) => {
+    browser.storage.sync.get().then((result) => {
         // only overwrite if entry existent in storage
         if (result.forbidden_statuses !== undefined)
             forbidden_statuses = result.forbidden_statuses;

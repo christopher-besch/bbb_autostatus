@@ -34,5 +34,10 @@ document.getElementById("anti-afk-detection").addEventListener("click", (e) => {
         command: "anti_afk_detection",
     });
 });
+document.getElementById("open-settings").addEventListener("click", (e) => {
+    browser.runtime.sendMessage({
+        command: "open_settings",
+    });
+});
 export {};
 //# sourceMappingURL=popup.js.map

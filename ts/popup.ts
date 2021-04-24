@@ -46,3 +46,9 @@ window.onload = add_status_button_listener;
         });
     }
 );
+
+(document.getElementById("open-settings") as HTMLButtonElement).addEventListener("click", (e) => {
+    browser.runtime.sendMessage({
+        command: "open_settings",
+    });
+});
