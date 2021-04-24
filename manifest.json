@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Big Blue Button Autostatus",
-    "version": "0.1",
+    "version": "0.2",
     "author": "Christopher Besch",
     "description": "A set of Big Blue Button Tools.",
     "homepage_url": "https://github.com/christopher-besch/bbb_autostatus",

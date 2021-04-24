@@ -38,6 +38,30 @@ function get_status(user: HTMLDivElement): number {
     throw new Error("unable to find status icon");
 }
 
+function get_best_status(forbidden_statuses: { [status: number]: boolean }): number {
+    const users = get_all_users();
+    let scores: number[][] = [
+        [1, 0],
+        [2, 0],
+        [3, 0],
+        [4, 0],
+        [5, 0],
+        [6, 0],
+        [7, 0],
+        [8, 0],
+        [9, 0],
+        [10, 0],
+    ];
+    for (let user of users) {
+        const status = get_status(user);
+        if (!forbidden_statuses[status]) scores[get_status(user) - 1][1]++;
+    }
+    scores.sort((a, b) => {
+        return b[1] - a[1];
+    });
+    return scores[0][0];
+}
+
 function update_status(status: number): void {
     const current_user = get_current_user();
     // already satisfied?
@@ -68,30 +92,6 @@ function update_status(status: number): void {
         }
     }
     pallet_options[status].click();
-}
-
-function get_best_status(forbidden_statuses: { [status: number]: boolean }): number {
-    const users = get_all_users();
-    let scores: number[][] = [
-        [1, 0],
-        [2, 0],
-        [3, 0],
-        [4, 0],
-        [5, 0],
-        [6, 0],
-        [7, 0],
-        [8, 0],
-        [9, 0],
-        [10, 0],
-    ];
-    for (let user of users) {
-        const status = get_status(user);
-        if (!forbidden_statuses[status]) scores[get_status(user) - 1][1]++;
-    }
-    scores.sort((a, b) => {
-        return b[1] - a[1];
-    });
-    return scores[0][0];
 }
 
 const status_icons: { [name: string]: number } = {
