@@ -61,6 +61,10 @@ You status will automatically toggle between _None_ and _Raised Hand_.
 
 How about that—pretty easy, isn't it?
 
+# Big Blue Button Autostatus lets you be the boss
+
+The 70's called, they want their commercials back.
+
 # Installation
 
 ## Firefox
@@ -78,7 +82,3 @@ In order to install it, you have to unzip it, open `chrome://extensions` in Chro
 
 -   select custom toggle raise shortcut
 -   notifications (anti afk detection online/offline notifications)
-
-# Big Blue Button Autostatus lets you be the boss
-
-The 70's called, they want their commercials back.
