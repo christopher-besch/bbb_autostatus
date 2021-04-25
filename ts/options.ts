@@ -9,7 +9,6 @@ function update_settings(overwrite: boolean): void {
         "afk-form"
     ) as HTMLCollectionOf<HTMLInputElement>;
     for (let element of elements) {
-        // currently selected status
         const status = JSON.parse(element.dataset.status as string) as number;
         // overwrite form or load into storage
         if (overwrite) element.checked = forbidden_statuses[status];
@@ -25,11 +24,16 @@ function update_settings(overwrite: boolean): void {
     if (overwrite) {
         browser.commands.getAll().then((commands: any) => {
             for (let command of commands)
-                if (command.name === "toggle-raise") toggle_raise_form.value = command.shortcut;
+                switch (command.name) {
+                    case "toggle-raise": {
+                        toggle_raise_form.value = command.shortcut;
+                        break;
+                    }
+                }
         });
     } else {
         let error_p = document.getElementById("invalid-shortcut") as HTMLParagraphElement;
-        // todo: very bad
+        // todo: very bad but the promise exception somehow doesn't work
         error_p.style.display = "block";
         browser.commands
             .update({

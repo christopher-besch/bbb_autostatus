@@ -11,12 +11,18 @@
             padding: 1em;
         }
 
-        input {
+        button {
             margin-left: 1em;
         }
 
         label {
             margin-left: 1em;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
         }
     </style>
 </head>
@@ -24,30 +30,54 @@
 <body>
     <p>Disallowed Statuses for Anti AFK detection
         (disabling raising your hand may be useful)</p>
-    <label for="afk-1">None</label>
-    <input class="afk-form" type="checkbox" data-status="1" id="afk-1">
-    <label for="afk-2">Away</label>
-    <input class="afk-form" type="checkbox" data-status="2" id="afk-2">
-    <label for="afk-3">Raise</label>
-    <input class="afk-form" type="checkbox" data-status="3" id="afk-3">
-    <label for="afk-4">Undecided</label>
-    <input class="afk-form" type="checkbox" data-status="4" id="afk-4">
-    <label for="afk-5">Confused</label>
-    <input class="afk-form" type="checkbox" data-status="5" id="afk-5">
-    <label for="afk-6">Sad</label>
-    <input class="afk-form" type="checkbox" data-status="6" id="afk-6">
-    <label for="afk-7">Happy</label>
-    <input class="afk-form" type="checkbox" data-status="7" id="afk-7">
-    <label for="afk-8">Applaud</label>
-    <input class="afk-form" type="checkbox" data-status="8" id="afk-8">
-    <label for="afk-9">Thumbs Up</label>
-    <input class="afk-form" type="checkbox" data-status="9" id="afk-9">
-    <label for="afk-10">Thumbs Down</label>
-    <input class="afk-form" type="checkbox" data-status="10" id="afk-10">
+    <form>
+        <table style="width: 100%;">
+            <tr>
+                <th><label for="afk-1">None</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="1" id="afk-1"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-2">Away</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="2" id="afk-2"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-3">Raise</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="3" id="afk-3"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-4">Undecided</label>
+                <th><input class="afk-form" type="checkbox" data-status="4" id="afk-4"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-5">Confused</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="5" id="afk-5"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-6">Sad</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="6" id="afk-6"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-7">Happy</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="7" id="afk-7"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-8">Applaud</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="8" id="afk-8"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-9">Thumbs Up</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="9" id="afk-9"></th>
+            </tr>
+            <tr>
+                <th><label for="afk-10">Thumbs Down</label></th>
+                <th><input class="afk-form" type="checkbox" data-status="10" id="afk-10"></th>
+            </tr>
+        </table>
 
-    <label for="toggle-raise-form">Toggle Raise Hand Shortcut</label>
-    <p id="invalid-shortcut" style="color: red; display: none;">Invalid</p>
-    <input type="text" id="toggle-raise-form">
+        <label for="toggle-raise-form">Toggle Raise Hand Shortcut</label><br />
+        <input type="text" id="toggle-raise-form">
+        <p id="invalid-shortcut" style="color: red; display: none;">Invalid Shortcut</p>
+    </form>
 
     <button id="update-settings">Update Settings</button>
 

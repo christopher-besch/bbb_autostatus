@@ -5,12 +5,14 @@ function notify(msg) {
         message: msg,
     });
 }
+// send msg to all correct urls
 function msg_content(msg) {
     browser.tabs.query({ url: "*://*.bigbluebutton.org/*" }).then((tabs) => {
         for (let tab of tabs)
             browser.tabs.sendMessage(tab.id, msg);
     });
 }
+// stop all running repeating functions with timeouts
 function stop_daemons() {
     // if (running_daemons["status_brr"]) notify("stopped status brr.");
     if (running_daemons["anti_afk_detection"])
@@ -19,6 +21,7 @@ function stop_daemons() {
         running_daemons[daemon_name] = false;
 }
 function status_brr(status, timeout) {
+    // should terminate?
     if (!running_daemons["status_brr"])
         return;
     msg_content({
@@ -32,8 +35,10 @@ function status_brr(status, timeout) {
     }, timeout);
 }
 function blend_in() {
+    // should terminate?
     if (!running_daemons["anti_afk_detection"])
         return;
+    // get forbidden_statuses
     browser.storage.sync.get().then((result) => {
         // only overwrite if entry existent in storage
         if (result.forbidden_statuses !== undefined)
@@ -49,7 +54,24 @@ function blend_in() {
         // todo: don't hard code
     }, 3000);
 }
-function handle_msg(msg) {
+let forbidden_statuses = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+    10: false,
+};
+let running_daemons = {
+    status_brr: false,
+    anti_afk_detection: false,
+};
+// handle messages
+browser.runtime.onMessage.addListener((msg) => {
     switch (msg.command) {
         // direct reroute
         case "update_status": {
@@ -81,7 +103,8 @@ function handle_msg(msg) {
             break;
         }
     }
-}
+});
+// handle commands
 browser.commands.onCommand.addListener((name) => {
     switch (name) {
         case "toggle-raise": {
@@ -92,23 +115,5 @@ browser.commands.onCommand.addListener((name) => {
         }
     }
 });
-let forbidden_statuses = {
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false,
-    7: false,
-    8: false,
-    9: false,
-    10: false,
-};
-let running_daemons = {
-    status_brr: false,
-    anti_afk_detection: false,
-};
-browser.runtime.onMessage.addListener(handle_msg);
 export {};
-// todo: hotkeys
 //# sourceMappingURL=background.js.map

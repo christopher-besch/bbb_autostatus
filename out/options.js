@@ -4,7 +4,6 @@ function update_settings(overwrite) {
     ////////////////////
     const elements = document.getElementsByClassName("afk-form");
     for (let element of elements) {
-        // currently selected status
         const status = JSON.parse(element.dataset.status);
         // overwrite form or load into storage
         if (overwrite)
@@ -21,13 +20,17 @@ function update_settings(overwrite) {
     if (overwrite) {
         browser.commands.getAll().then((commands) => {
             for (let command of commands)
-                if (command.name === "toggle-raise")
-                    toggle_raise_form.value = command.shortcut;
+                switch (command.name) {
+                    case "toggle-raise": {
+                        toggle_raise_form.value = command.shortcut;
+                        break;
+                    }
+                }
         });
     }
     else {
         let error_p = document.getElementById("invalid-shortcut");
-        // todo: very bad
+        // todo: very bad but the promise exception somehow doesn't work
         error_p.style.display = "block";
         browser.commands
             .update({

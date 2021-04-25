@@ -16,6 +16,7 @@ function get_all_users(): HTMLCollectionOf<HTMLDivElement> {
 function get_current_user(): HTMLDivElement {
     const users = get_all_users();
     for (let user of users) {
+        // match with "You" in aria-label
         const aria_labels = (user.getAttribute("aria-label") as string).split(" ");
         if (aria_labels.indexOf("You") > -1) return user;
     }
@@ -28,48 +29,16 @@ function get_status(user: HTMLDivElement): number {
         "avatar--Z2lyL8K"
     ) as HTMLCollectionOf<HTMLDivElement>)[0];
     const avatar_status = avatar.children[1] as HTMLDivElement;
-    // none status
+    // none status if no icon
     if (avatar_status.childElementCount == 0) return 1;
-
+    // other status according to displayed icon
     const avatar_icon = avatar_status.children[0] as HTMLElement;
-    const avatar_icon_classes = avatar_icon.classList;
     for (let icon in status_icons)
-        if (avatar_icon_classes.contains(icon)) return status_icons[icon];
+        if (avatar_icon.classList.contains(icon)) return status_icons[icon];
     throw new Error("unable to find status icon");
 }
 
-function update_status(status: number): void {
-    const current_user = get_current_user();
-    // already satisfied?
-    let current_status = get_status(current_user);
-    if (status == current_status) return;
-
-    expand(current_user);
-
-    // get pallet
-    const tertiary_parent = ((current_user.parentElement as HTMLDivElement)
-        .parentElement as HTMLDivElement).parentElement as HTMLDivElement;
-
-    const pallet = (tertiary_parent.getElementsByClassName(
-        "verticalList--Ghtxj"
-    ) as HTMLCollectionOf<HTMLUListElement>)[0];
-
-    const pallet_options = pallet.children as HTMLCollectionOf<HTMLElement>;
-    switch (status) {
-        case 1: {
-            // collapse if necessary
-            if (pallet_options.length == 11) pallet_options[0].click();
-            break;
-        }
-        default: {
-            // expand if necessary
-            if (pallet_options.length != 11) pallet_options[0].click();
-            break;
-        }
-    }
-    pallet_options[status].click();
-}
-
+// get most popular status under all users
 function get_best_status(forbidden_statuses: { [status: number]: boolean }): number {
     const users = get_all_users();
     let scores: number[][] = [
@@ -86,12 +55,40 @@ function get_best_status(forbidden_statuses: { [status: number]: boolean }): num
     ];
     for (let user of users) {
         const status = get_status(user);
+        // forbidden statuses get ignored
         if (!forbidden_statuses[status]) scores[get_status(user) - 1][1]++;
     }
     scores.sort((a, b) => {
         return b[1] - a[1];
     });
     return scores[0][0];
+}
+
+function update_status(status: number): void {
+    const current_user = get_current_user();
+    // already satisfied?
+    let current_status = get_status(current_user);
+    if (status == current_status) return;
+
+    expand(current_user);
+    // get pallet
+    const tertiary_parent = ((current_user.parentElement as HTMLDivElement)
+        .parentElement as HTMLDivElement).parentElement as HTMLDivElement;
+    const pallet = (tertiary_parent.getElementsByClassName(
+        "verticalList--Ghtxj"
+    ) as HTMLCollectionOf<HTMLUListElement>)[0];
+
+    const pallet_options = pallet.children as HTMLCollectionOf<HTMLElement>;
+    if (
+        // should be collapsed?
+        (status == 1 && pallet_options.length == 11) ||
+        // should be expanded?
+        (status != 1 && pallet_options.length != 11)
+    )
+        pallet_options[0].click();
+
+    // click status icon or remove status button
+    pallet_options[status].click();
 }
 
 const status_icons: { [name: string]: number } = {
