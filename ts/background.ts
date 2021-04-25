@@ -11,9 +11,11 @@ function notify(msg: string) {
 
 // send msg to all correct urls
 function msg_content(msg: any): void {
-    browser.tabs.query({ url: "*://*.bigbluebutton.org/*" }).then((tabs: any) => {
-        for (let tab of tabs) browser.tabs.sendMessage(tab.id, msg);
-    });
+    browser.tabs
+        .query({ url: ["*://*.bigbluebutton.org/*", "*://*.videoconference.iserv.eu/*"] })
+        .then((tabs: any) => {
+            for (let tab of tabs) browser.tabs.sendMessage(tab.id, msg);
+        });
 }
 
 // stop all running repeating functions with timeouts
