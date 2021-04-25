@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Big Blue Button Autostatus",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "author": "Christopher Besch",
     "description": "BBB Tools preventing the teacher to detect that you aren't actually listening",
     "homepage_url": "https://github.com/christopher-besch/bbb_autostatus",
@@ -30,7 +30,7 @@
     },
     "commands": {
         "toggle-raise": {
-            "suggested_key": { "default": "Ctrl+E" },
+            "suggested_key": { "default": "Ctrl+Q" },
             "description": "Toggle raised hand"
         }
     }
