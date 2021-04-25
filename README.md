@@ -61,8 +61,24 @@ You status will automatically toggle between _None_ and _Raised Hand_.
 
 How about that—pretty easy, isn't it?
 
-# Big Blue Button Autostatus lets you be the boss
+# Installation
+
+## Firefox
 
 You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/releases/latest).
+
+## Chrome and Other
+
+This extension is only supported for Firefox but there is a port for Chrome.
+It is not supported and while the Firefox version will likely receive updates and security patches, the port probably won't.
+You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/archive/refs/heads/chrome_port.zip).
+In order to install it, you have to unzip it, open `chrome://extensions` in Chrome, activate `Developer mode` in the top right and load the extracted directory after clicking `Load unpacked`.
+
+### Missing Features in the Chrome Port
+
+-   select custom toggle raise shortcut
+-   notifications (anti afk detection online/offline notifications)
+
+# Big Blue Button Autostatus lets you be the boss
 
 The 70's called, they want their commercials back.
