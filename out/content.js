@@ -14,10 +14,12 @@ function get_current_user() {
     for (let user of users) {
         // match with "You" in aria-label
         const aria_labels = user.getAttribute("aria-label").split(" ");
-        if (aria_labels.indexOf("You") > -1)
+        if (aria_labels.indexOf("You") > -1 || aria_labels.indexOf("Sie") > -1)
             return user;
     }
-    throw new Error("unable to find current user");
+    // default return first user
+    console.log("can't find current user; defaulting to first user.");
+    return users[0];
 }
 function get_status(user) {
     const parent = user.parentElement;

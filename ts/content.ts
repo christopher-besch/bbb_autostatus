@@ -18,9 +18,11 @@ function get_current_user(): HTMLDivElement {
     for (let user of users) {
         // match with "You" in aria-label
         const aria_labels = (user.getAttribute("aria-label") as string).split(" ");
-        if (aria_labels.indexOf("You") > -1) return user;
+        if (aria_labels.indexOf("You") > -1 || aria_labels.indexOf("Sie") > -1) return user;
     }
-    throw new Error("unable to find current user");
+    // default return first user
+    console.log("can't find current user; defaulting to first user.");
+    return users[0];
 }
 
 function get_status(user: HTMLDivElement): number {
