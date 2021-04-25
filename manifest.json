@@ -3,7 +3,7 @@
     "name": "Big Blue Button Autostatus",
     "version": "0.3",
     "author": "Christopher Besch",
-    "description": "A set of Big Blue Button Tools.",
+    "description": "BBB Tools preventing the teacher to detect that you aren't actually listening",
     "homepage_url": "https://github.com/christopher-besch/bbb_autostatus",
 
     "permissions": ["notifications", "tabs", "storage"],
