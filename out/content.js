@@ -91,6 +91,8 @@ const status_icons = {
     "icon-bbb-thumbs_up": 9,
     "icon-bbb-thumbs_down": 10,
 };
+// todo: debug
+document.body.style.border = "5px solid green";
 // handle content message
 browser.runtime.onMessage.addListener((msg) => {
     switch (msg.command) {
