@@ -65,7 +65,7 @@ How about that—pretty easy, isn't it?
 
 ## Firefox
 
-You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/releases/latest).
+You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/releases/download/0.4.2/big_blue_button_autostatus-0.4.2-an+fx.xpi).
 
 ## Chrome and Other
 
