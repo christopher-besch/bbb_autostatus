@@ -61,6 +61,6 @@ How about that, pretty easy, isn't it?
 
 ## Big Blue Button Autostatus lets you be the boss
 
-You can download the extension [here](https://github.com/christopher-besch/cryptography/releases/latest).
+You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/releases/latest).
 
 The 70's called, they want their commercials back.
