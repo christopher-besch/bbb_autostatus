@@ -1,18 +1,3 @@
-function update_status(status) {
-    // set new status
-    browser.runtime.sendMessage({
-        command: "update_status",
-        status: status,
-    });
-}
-function add_status_button_listener() {
-    const buttons = document.getElementsByClassName("status-button");
-    for (let button of buttons) {
-        button.addEventListener("click", (e) => {
-            update_status(JSON.parse(button.dataset.status));
-        });
-    }
-}
 function get_timeout() {
     // get value
     const timeout_raw = document.getElementById("timeout-form").value;
@@ -22,7 +7,17 @@ function get_timeout() {
         "Timeout: " + timeout + "ms";
     return timeout;
 }
-window.onload = add_status_button_listener;
+// add button listeners
+window.onload = () => {
+    const buttons = document.getElementsByClassName("status-button");
+    for (let button of buttons)
+        button.addEventListener("click", (e) => {
+            browser.runtime.sendMessage({
+                command: "update_status",
+                status: JSON.parse(button.dataset.status),
+            });
+        });
+};
 document.getElementById("status-go-brr").addEventListener("click", (e) => {
     browser.runtime.sendMessage({
         command: "status_brr",

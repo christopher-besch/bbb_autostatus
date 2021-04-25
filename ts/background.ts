@@ -9,12 +9,14 @@ function notify(msg: string) {
     });
 }
 
+// send msg to all correct urls
 function msg_content(msg: any): void {
     browser.tabs.query({ url: "*://*.bigbluebutton.org/*" }).then((tabs: any) => {
         for (let tab of tabs) browser.tabs.sendMessage(tab.id, msg);
     });
 }
 
+// stop all running repeating functions with timeouts
 function stop_daemons() {
     // if (running_daemons["status_brr"]) notify("stopped status brr.");
     if (running_daemons["anti_afk_detection"]) notify("anti afk detection offline.");
@@ -22,6 +24,7 @@ function stop_daemons() {
 }
 
 function status_brr(status: number, timeout: number): void {
+    // should terminate?
     if (!running_daemons["status_brr"]) return;
     msg_content({
         command: "update_status",
@@ -35,7 +38,9 @@ function status_brr(status: number, timeout: number): void {
 }
 
 function blend_in(): void {
+    // should terminate?
     if (!running_daemons["anti_afk_detection"]) return;
+    // get forbidden_statuses
     browser.storage.sync.get().then((result: any) => {
         // only overwrite if entry existent in storage
         if (result.forbidden_statuses !== undefined) forbidden_statuses = result.forbidden_statuses;
@@ -51,7 +56,25 @@ function blend_in(): void {
     }, 3000);
 }
 
-function handle_msg(msg: any): void {
+let forbidden_statuses: { [status: number]: boolean } = {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+    10: false,
+};
+let running_daemons: { [name: string]: boolean } = {
+    status_brr: false,
+    anti_afk_detection: false,
+};
+
+// handle messages
+browser.runtime.onMessage.addListener((msg: any) => {
     switch (msg.command) {
         // direct reroute
         case "update_status": {
@@ -83,8 +106,9 @@ function handle_msg(msg: any): void {
             break;
         }
     }
-}
+});
 
+// handle commands
 browser.commands.onCommand.addListener((name: string) => {
     switch (name) {
         case "toggle-raise": {
@@ -95,23 +119,3 @@ browser.commands.onCommand.addListener((name: string) => {
         }
     }
 });
-
-let forbidden_statuses: { [status: number]: boolean } = {
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false,
-    7: false,
-    8: false,
-    9: false,
-    10: false,
-};
-let running_daemons: { [name: string]: boolean } = {
-    status_brr: false,
-    anti_afk_detection: false,
-};
-browser.runtime.onMessage.addListener(handle_msg);
-
-// todo: hotkeys
