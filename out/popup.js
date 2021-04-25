@@ -3,7 +3,7 @@ function get_timeout() {
     const timeout_raw = document.getElementById("timeout-form").value;
     const timeout = JSON.parse(timeout_raw);
     // set label
-    document.getElementById("timeout-label").innerHTML =
+    document.getElementById("timeout-label").innerText =
         "Timeout: " + timeout + "ms";
     return timeout;
 }
