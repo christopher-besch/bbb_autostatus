@@ -5,14 +5,14 @@ With homeschooling and video conferences students are at an advantage—an advan
 
 Now I'd like to show you some of the valuable things your **Big Blue Button Autostatus extension** lets you do.
 
-### Direct Status Change
+## Direct Status Change
 
 Use the **extension popup** to select your status in the video conference.
 Therefore you don't have to click yourself through two menus just to put on a smile.
 
 You can open the **extension popup** by clicking on the extension icon in the top right of the task bar.
 
-### Status Go Brrrrrrrrr
+## Status Go Brrrrrrrrr
 
 Did you ever miss being able to snap your finger in online class?
 The option _Status Go Brrrrrrrrr_ automatically cycles your status, changing it up to ten times per second.
@@ -21,7 +21,7 @@ Just imagine the chaos this causes if everyone uses it...
 
 It's beautiful—I've looked at this for five hours now.
 
-### Anti AFK Detection
+## Anti AFK Detection
 
 Does this sound familiar to you?
 _"Everyone who understood this, please change your status to 'Thumbs Up'"_
@@ -49,7 +49,7 @@ Simply click the _Open Settings_ Button in the **extension popup**.
 There you will find one checkbox for each status.
 Each of the checked boxes orders the **Anti AFK Detection** to act as if none of the other users chose the corresponding status.
 
-### Toggle Raise Hand Shortcut
+## Toggle Raise Hand Shortcut
 
 Do you want to save some time raising and lowering your hand?
 Just go to the **settings** and select a shortcut you like.
@@ -61,7 +61,7 @@ You status will automatically toggle between _None_ and _Raised Hand_.
 
 How about that—pretty easy, isn't it?
 
-## Big Blue Button Autostatus lets you be the boss
+# Big Blue Button Autostatus lets you be the boss
 
 You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/releases/latest).
 
