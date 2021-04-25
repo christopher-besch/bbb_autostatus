@@ -3,7 +3,7 @@
 School is war.
 With homeschooling and video conferences students are at an advantage—an advantage that should not come to waste.
 
-The **Big Blue Button Autostatus Firefox Extension** gives you many special capabilities:
+Now I'd like to show you some of the valuable things your **Big Blue Button Autostatus** extension lets you do.
 
 ### Direct Status Change
 
@@ -54,16 +54,11 @@ Just go to the settings fo the extension and select a shortcut you like.
 You have to make sure that the shortcut isn't used by any other part of the browser or your operating system.
 Just try a few different shortcuts and determine which ones work for you.
 
-When you've selected a shortcut you like, click part of your browser and type your shortcut.
+When you've selected a shortcut you like, click any part of your browser and type your shortcut.
 You status will automatically toggle between _None_ and _Raised Hand_.
 
 How about that, pretty easy, isn't it?
-todo: unfinished
 
-Now I'd like to show you some of the valuable things your **Big Blue Button Autostatus** extension lets you do.
-
-So make your life a bit easier by using **Big Blue Button Autostatus**.
-
-**Big Blue Button Autostatus lets you be the boss**
+## Big Blue Button Autostatus lets you be the boss
 
 The 70's called, they want their commercials back.
