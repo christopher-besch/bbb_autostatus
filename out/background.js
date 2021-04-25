@@ -7,7 +7,9 @@ function notify(msg) {
 }
 // send msg to all correct urls
 function msg_content(msg) {
-    browser.tabs.query({ url: "*://*.bigbluebutton.org/*" }).then((tabs) => {
+    browser.tabs
+        .query({ url: ["*://*.bigbluebutton.org/*", "*://*.videoconference.iserv.eu/*"] })
+        .then((tabs) => {
         for (let tab of tabs)
             browser.tabs.sendMessage(tab.id, msg);
     });
