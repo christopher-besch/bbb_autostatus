@@ -57,7 +57,7 @@ You have to make sure that the shortcut isn't used by any other part of the brow
 Just try a few different shortcuts and determine which ones work for you.
 
 When you've selected a shortcut you like, click any part of your browser and press your shortcut.
-You status will automatically toggle between _None_ and _Raised Hand_.
+Your status will automatically toggle between _None_ and _Raised Hand_.
 
 How about that—pretty easy, isn't it?
 
@@ -75,6 +75,8 @@ You can download the extension [here](https://github.com/christopher-besch/bbb_a
 
 This extension is only supported for Firefox but there is a port for Chrome.
 It is not supported and while the Firefox version will likely receive updates and security patches, the port probably won't.
+`Fuck Chrome!`
+
 You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/archive/refs/heads/chrome_port.zip).
 In order to install it, you have to unzip it, open `chrome://extensions` in Chrome, activate `Developer mode` in the top right and load the extracted directory after clicking `Load unpacked`.
 
