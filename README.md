@@ -61,6 +61,8 @@ Your status will automatically toggle between _None_ and _Raised Hand_.
 
 How about that—pretty easy, isn't it?
 
+The **Toggle Raise Hand Shortcut** is disabled when the **Anti AFK Detection** is online to keep you from accidentally deactivating it.
+
 # Big Blue Button Autostatus lets you be the boss
 
 The 70's called, they want their commercials back.
@@ -79,6 +81,7 @@ It is not supported and while the Firefox version will likely receive updates an
 
 You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/archive/refs/heads/chrome_port.zip).
 In order to install it, you have to unzip it, open `chrome://extensions` in Chrome, activate `Developer mode` in the top right and load the extracted directory after clicking `Load unpacked`.
+The folder is not allowed to be deleted or the extension will be removed.
 
 ### Missing Features in the Chrome Port
 
