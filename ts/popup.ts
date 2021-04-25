@@ -6,8 +6,9 @@ function get_timeout(): number {
     const timeout_raw = (document.getElementById("timeout-form") as HTMLInputElement).value;
     const timeout = JSON.parse(timeout_raw) as number;
     // set label
-    (document.getElementById("timeout-label") as HTMLLabelElement).innerHTML =
-        "Timeout: " + timeout + "ms";
+    (document.getElementById(
+        "timeout-label"
+    ) as HTMLLabelElement).innerText = `Timeout: ${timeout}ms`;
     return timeout;
 }
 
