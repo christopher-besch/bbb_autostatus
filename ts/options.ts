@@ -34,7 +34,8 @@ function update_settings(overwrite: boolean): void {
     } else {
         let error_p = document.getElementById("invalid-shortcut") as HTMLParagraphElement;
         // todo: very bad but the promise exception somehow doesn't work
-        error_p.style.display = "block";
+        // todo: doesn't work with chrome
+        // error_p.style.display = "block";
         browser.commands
             .update({
                 name: "toggle-raise",

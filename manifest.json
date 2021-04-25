@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Big Blue Button Autostatus",
-    "version": "0.4.3.0",
+    "version": "0.1",
     "author": "Christopher Besch",
     "description": "BBB Tools preventing the teacher to detect that you aren't actually listening",
     "homepage_url": "https://github.com/christopher-besch/bbb_autostatus",
@@ -14,7 +14,7 @@
     "content_scripts": [
         {
             "matches": ["*://*.bigbluebutton.org/*", "*://*.videoconference.iserv.eu/*"],
-            "js": ["out/content.js"]
+            "js": ["out/vendor/webextension-polyfill/browser-polyfill.min.js", "out/content.js"]
         }
     ],
     "browser_action": {
@@ -22,11 +22,6 @@
     },
     "options_ui": {
         "page": "out/options.html"
-    },
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "bbb_autostatus_dist@christopher-besch"
-        }
     },
     "commands": {
         "toggle-raise": {

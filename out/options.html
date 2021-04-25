@@ -74,13 +74,15 @@
             </tr>
         </table>
 
-        <label for="toggle-raise-form">Toggle Raise Hand Shortcut</label><br />
-        <input type="text" id="toggle-raise-form">
-        <p id="invalid-shortcut" style="color: red; display: none;">Invalid Shortcut</p>
+        <!-- todo: doesn't work with chrome -->
+        <!-- <label for="toggle-raise-form">Toggle Raise Hand Shortcut</label><br /> -->
+        <!-- <input type="text" id="toggle-raise-form">
+        <p id="invalid-shortcut" style="color: red; display: none;">Invalid Shortcut</p> -->
     </form>
 
     <button id="update-settings">Save Settings</button>
 
+    <script src="vendor/webextension-polyfill/browser-polyfill.min.js"></script>
     <script type="module" src="options.js"></script>
 </body>
 

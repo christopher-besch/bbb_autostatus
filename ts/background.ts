@@ -2,11 +2,12 @@ export {};
 declare let browser: any;
 
 function notify(msg: string) {
-    browser.notifications.create({
-        type: "basic",
-        title: "BBB Autostatus",
-        message: msg,
-    });
+    // todo: doesn't work with chrome???
+    // browser.notifications.create({
+    //     type: "basic",
+    //     title: "BBB Autostatus",
+    //     message: msg,
+    // });
 }
 
 // send msg to all correct urls

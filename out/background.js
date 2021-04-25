@@ -1,9 +1,10 @@
 function notify(msg) {
-    browser.notifications.create({
-        type: "basic",
-        title: "BBB Autostatus",
-        message: msg,
-    });
+    // todo: doesn't work with chrome???
+    // browser.notifications.create({
+    //     type: "basic",
+    //     title: "BBB Autostatus",
+    //     message: msg,
+    // });
 }
 // send msg to all correct urls
 function msg_content(msg) {
