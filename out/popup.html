@@ -18,6 +18,10 @@
         label {
             margin-left: 1em;
         }
+
+        img {
+            width: 20;
+        }
     </style>
 </head>
 
@@ -26,16 +30,59 @@
     <button id="open-settings">Open Settings</button>
     <a href="https://github.com/christopher-besch/bbb_autostatus">Documentation</a>
     <hr>
-    <button class="status-button" data-status="1">None</button><br />
-    <button class="status-button" data-status="2">Away</button><br />
-    <button class="status-button" data-status="3">Raise</button><br />
-    <button class="status-button" data-status="4">Undecided</button><br />
-    <button class="status-button" data-status="5">Confused</button><br />
-    <button class="status-button" data-status="6">Sad</button><br />
-    <button class="status-button" data-status="7">Happy</button><br />
-    <button class="status-button" data-status="8">Applaud</button><br />
-    <button class="status-button" data-status="9">Thumbs Up</button><br />
-    <button class="status-button" data-status="10">Thumbs Down</button><br />
+    <table>
+        <tr>
+            <td>
+                <button class="status-button" data-status="1"><img
+                        src="icons/do_not_disturb_on_black_24dp.svg">None</button><br />
+            </td>
+            <td>
+                <button class="status-button" data-status="2"><img
+                        src="icons/schedule_black_24dp.svg">Away</button><br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="status-button" data-status="3"><img
+                        src="icons/back_hand_black_24dp.svg">Raise</button><br />
+            </td>
+            <td>
+                <button class="status-button" data-status="4"><img
+                        src="icons/sentiment_neutral_black_24dp.svg">Undecided</button><br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="status-button" data-status="5"><img
+                        src="icons/sick_black_24dp.svg">Confused</button><br />
+            </td>
+            <td>
+                <button class="status-button" data-status="6"><img
+                        src="icons/sentiment_very_dissatisfied_black_24dp.svg">Sad</button><br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="status-button" data-status="7"><img
+                        src="icons/sentiment_satisfied_alt_black_24dp.svg">Happy</button><br />
+            </td>
+            <td>
+                <button class="status-button" data-status="8"><img
+                        src="icons/celebration_black_24dp.svg">Applaud</button><br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="status-button" data-status="9"><img src="icons/thumb_up_black_24dp.svg">Thumbs
+                    Up</button><br />
+            </td>
+            <td>
+                <button class="status-button" data-status="10"><img src="icons/thumb_down_black_24dp.svg">Thumbs
+                    Down</button><br />
+            </td>
+        </tr>
+    </table>
+    <hr>
     <button id="status-go-brr">Status Go Brrrrrrrrr</button>
     <label id="timeout-label" for="timout-form">Timeout: 1000ms</label>
     <input id="timeout-form" type="range" min="100" max="1000" value="1000"><br />
