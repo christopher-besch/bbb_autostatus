@@ -71,7 +71,7 @@ The 70's called, they want their commercials back.
 
 ## Firefox
 
-You can download the extension [here](https://github.com/christopher-besch/bbb_autostatus/releases/download/0.4.2/big_blue_button_autostatus-0.4.2-an+fx.xpi).
+You can download the extension [here](https://addons.mozilla.org/en-US/firefox/addon/bbb-autostatus/).
 
 ## Chrome and Other
 
