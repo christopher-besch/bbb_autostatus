@@ -20,6 +20,10 @@
     "browser_action": {
         "default_popup": "out/popup.html"
     },
+    "icons": {
+        "48": "out/icons/flutter_dash_black_24dp.svg",
+        "96": "out/icons/flutter_dash_black_24dp.svg"
+    },
     "options_ui": {
         "page": "out/options.html"
     },
