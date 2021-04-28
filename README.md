@@ -1,5 +1,7 @@
 # Big Blue Button Autostatus
 
+<img align="center" src="bbb_autostatus.png">
+
 School is war.
 With homeschooling and video conferences students are at an advantage—an advantage that should not come to waste.
 
