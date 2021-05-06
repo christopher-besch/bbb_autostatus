@@ -54,7 +54,7 @@ function blend_in() {
     window.setTimeout(() => {
         blend_in();
         // todo: don't hard code
-    }, 3000);
+    }, 1000);
 }
 let forbidden_statuses = {
     1: false,

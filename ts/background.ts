@@ -1,4 +1,4 @@
-export {};
+export { };
 declare let browser: any;
 
 function notify(msg: string) {
@@ -55,10 +55,10 @@ function blend_in(): void {
     window.setTimeout(() => {
         blend_in();
         // todo: don't hard code
-    }, 3000);
+    }, 1000);
 }
 
-let forbidden_statuses: { [status: number]: boolean } = {
+let forbidden_statuses: { [status: number]: boolean; } = {
     1: false,
     2: false,
     3: false,
@@ -70,7 +70,7 @@ let forbidden_statuses: { [status: number]: boolean } = {
     9: false,
     10: false,
 };
-let running_daemons: { [name: string]: boolean } = {
+let running_daemons: { [name: string]: boolean; } = {
     status_brr: false,
     anti_afk_detection: false,
 };
