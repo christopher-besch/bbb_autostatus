@@ -1,5 +1,11 @@
 # Big Blue Button Autostatus
 
+# Note
+
+This Plugin currently does not work.
+Big Blue Button changed the internal layout of the web page and the project hasn't been updated yet.
+If you need the project, open an Issue and the problem will be fixed.
+
 <img align="center" src="bbb_autostatus.png">
 
 School is war.
