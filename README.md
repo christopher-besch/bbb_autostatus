@@ -95,3 +95,9 @@ The folder is not allowed to be deleted or the extension will be removed.
 
 -   select custom toggle raise shortcut
 -   notifications (anti afk detection online/offline notifications)
+
+# Compilation
+- install typescript: `yarn global add typescript`
+- run `tsc` in repo dir
+- compress with: `zip -r -FS ./bbb_autostatus.xpi * --exclude '*.git*'`
+
